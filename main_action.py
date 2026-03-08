@@ -27,6 +27,10 @@ def main():
         # 1. Fetch the diff
         diff = get_pr_diff(repo_name, pr_number)
         
+        if not diff or diff.strip() == "":
+            print("Warning: Diff is empty. Nothing to review.")
+            return
+
         # 2. Get AI review
         print("Requesting AI review from Groq...")
         review_text = review_code(diff)
@@ -38,7 +42,10 @@ def main():
         print("Successfully posted AI review!")
         
     except Exception as e:
-        print(f"Failed to complete AI review: {e}")
+        print(f"FAILED to complete AI review: {e}")
+        import traceback
+        traceback.print_exc()
+        exit(1) # Make the action actually fail if there is an error
 
 if __name__ == "__main__":
     main()
