@@ -18,3 +18,18 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+      - name: Install dependencies
+      # We add ${{ github.action_path }}/ so it finds requirements.txt inside the Action repo
+        run: pip install -r ${{ github.action_path }}/requirements.txt
+        shell: bash
+
+      - name: Run AI Reviewer
+        # We add ${{ github.action_path }}/ to target the correct python script
+        run: python ${{ github.action_path }}/main_action.py
+        shell: bash
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+          GROQ_API_KEY: ${{ inputs.GROQ_API_KEY }}
+          # This tells Python to also look for the 'app' folder inside the Action path
+          PYTHONPATH: ${{ github.action_path }}

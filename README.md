@@ -1,6 +1,6 @@
-# Mifos AI PR Reviewer (GitHub Action)
+# AI PR Reviewer (GitHub Action)
 
-This is an AI-driven security and code quality reviewer designed specifically for the Mifos ecosystem. It automatically analyzes Pull Requests and flags security vulnerabilities, performance issues, and bugs using the Groq (Llama 3.3) LLM.
+This is an AI-driven security and code quality reviewer. It automatically analyzes Pull Requests and flags security vulnerabilities, performance issues, and bugs using the Groq (Llama 3.3) LLM.
 
 ## 🚀 Features
 - **Security First**: Performs an automated first-pass security review (OWASP Top 10 focus).
@@ -31,7 +31,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: your-username/my-ai-code-reviewer@main
+      - uses: your-username/AI-Code-Reviewer@main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
