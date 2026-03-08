@@ -1,0 +1,25 @@
+name: 'Mifos AI PR Reviewer'
+description: 'An AI-driven code reviewer that provides feedback on security, bugs, and performance.'
+inputs:
+  GITHUB_TOKEN:
+    description: 'GitHub Token for posting comments'
+    required: true
+  GROQ_API_KEY:
+    description: 'API Key for Groq LLM'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+      shell: bash
+    - name: Run AI Reviewer
+      run: python main_action.py
+      shell: bash
+      env:
+        GITHUB_ACCESS_TOKEN: ${{ inputs.GITHUB_TOKEN }}
+        GROQ_API_KEY: ${{ inputs.GROQ_API_KEY }}

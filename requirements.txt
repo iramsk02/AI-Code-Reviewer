@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+langchain_groq
+PyGithub
+gitpython
+python-dotenv
+celery
+redis
+requests
