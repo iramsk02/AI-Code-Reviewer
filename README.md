@@ -1,38 +1,26 @@
-# AI PR Reviewer (GitHub Action)
+# AI Security PR Reviewer
 
-This is an AI-driven security and code quality reviewer. It automatically analyzes Pull Requests and flags security vulnerabilities, performance issues, and bugs using the Groq (Llama 3.3) LLM.
+## 📋 About the Project
+An automated **GitHub Action** that acts as a first-pass security auditor for Mifos repositories. It identifies potential vulnerabilities in Pull Requests before they are reviewed by core maintainers.
 
-## 🚀 Features
-- **Security First**: Performs an automated first-pass security review (OWASP Top 10 focus).
-- **GitHub Native**: Runs entirely within GitHub Actions—no hosting required.
-- **Fast Feedback**: Provides actionable comments directly on the PR in seconds.
+Part of the **AI for Developer Productivity** GSoC 2026 track.
 
-## 🛠️ Setup
+---
 
-### 1. Store your AI Reviewer on GitHub
-Push this folder to a new public repository (e.g., `your-username/my-ai-code-reviewer`).
+## 📂 Project Navigation
+- **[Implementation Plan](implementation_plan.md):** 14-week roadmap for developing the reviewer.
+- **[Research Log](research_log.md):** Security patterns and GitHub API documentation.
 
-### 2. Configure the Target Repository
-In the repository you want to review:
-1. Go to **Settings > Secrets and variables > Actions**.
-2. Add a new Secret: `GROQ_API_KEY` (Your Groq API key).
+---
 
-### 3. Add the Workflow
-Create `.github/workflows/ai-review.yml` in your target repository:
+## 🚀 Key Features
+1.  **Diff Analysis**: Scans incoming code changes for security flaws.
+2.  **Smarter Comments**: Injects actionable advice directly into the PR's line-by-line view.
+3.  **Severity Tagging**: Flags critical issues (e.g., SQLi) differently from style warnings.
 
-```yaml
-name: AI PR Reviewer
-on:
-  pull_request:
-    types: [opened, reopened, synchronize]
+---
 
-jobs:
-  review:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: your-username/AI-Code-Reviewer@main
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
-```
+## 🛠️ Installation
+1.  Add `.github/workflows/ai-security-reviewer.yml` to your repo.
+2.  Set `OPENAI_API_KEY` or `ANTHROPIC_API_KEY` in GitHub Secrets.
+3.  Customize rules in the `reviewer_config.json`.

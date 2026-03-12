@@ -17,8 +17,6 @@ def get_pr_diff(repo_name, pr_number):
     return response.text
 
 def post_comment(repo_name, pr_number, comment):
-
     repo = g.get_repo(repo_name)
     pr = repo.get_pull(pr_number)
-
     pr.create_issue_comment(comment)
