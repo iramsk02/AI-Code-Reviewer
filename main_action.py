@@ -7,7 +7,7 @@ def main():
     # GitHub Action provides the path to the event payload
     event_path = os.getenv("GITHUB_EVENT_PATH")
     if not event_path:
-        print("Error: GITHUB_EVENT_PATH not found. This script should run in a GitHub Action.")
+        print("Error: GITHUB_EVENT_PATH not found.")
         return
 
     with open(event_path, "r") as f:

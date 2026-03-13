@@ -1,7 +1,7 @@
 # AI Security PR Reviewer
 
 ## 📋 About the Project
-An automated **GitHub Action** that acts as a first-pass security auditor for Mifos repositories. It identifies potential vulnerabilities in Pull Requests before they are reviewed by core maintainers.
+An automated **GitHub Action** that acts as a first-pass security auditor for repositories. It identifies potential vulnerabilities in Pull Requests before they are reviewed by core maintainers.
 
 Part of the **AI for Developer Productivity** GSoC 2026 track.
 

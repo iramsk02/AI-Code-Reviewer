@@ -12,7 +12,7 @@ llm = ChatGroq(
 def review_code(diff):
 
     prompt = f"""
-You are a senior security engineer performing a first-pass security review on a pull request for the Mifos project.
+You are a senior security engineer performing a first-pass security review on a pull request
 
 Analyze the code diff and specifically flag:
 - Common security vulnerabilities (OWASP Top 10, SQL injection, XSS, etc.)
